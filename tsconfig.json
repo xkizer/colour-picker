@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "ES6",
+        "strict": true,
+        "outDir": "./build",
+        "lib": ["DOM", "WebWorker", "ESNext"],
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "skipLibCheck": true
+    },
+    "include": ["src/**/*"],
+}

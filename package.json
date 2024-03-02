@@ -1,0 +1,15 @@
+{
+  "name": "picsart-colour-picker",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && cp src/index.html build/index.html && cp -r src/assets build/assets",
+    "start": "npx serve -s build"
+  },
+  "author": "Chinenye Onuegbu",
+  "devDependencies": {
+    "serve": "^14.2.1",
+    "typescript": "^5.3.3"
+  }
+}
