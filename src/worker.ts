@@ -41,14 +41,13 @@ async function createZoomView(pixels: Uint8ClampedArray) {
     zoomContext.strokeRect(ZOOM_VIEW_RADIUS * (ZOOM_PIXEL_SIZE + 1) - 1, ZOOM_VIEW_RADIUS * (ZOOM_PIXEL_SIZE + 1) - 1, ZOOM_PIXEL_SIZE, ZOOM_PIXEL_SIZE);
 
     const blob = await zoomCanvas.convertToBlob();
-    const imageData = new FileReaderSync().readAsDataURL(blob);
-
+    const imageData = new FileReaderSync().readAsArrayBuffer(blob);
     return imageData;
 }
 
 // Listen for messages from the main thread (main thread will only ever send pixel data)
-onmessage = async function (e) {
+onmessage = async function (e: MessageEvent<ArrayBuffer>) {
     const pixels = new Uint8ClampedArray(e.data);
     const imageData = await createZoomView(pixels);
-    postMessage(imageData);
+    postMessage(imageData, [imageData]);
 }

@@ -136,7 +136,7 @@ function init() {
 
     // Intentionally left out of the setup function, as there is no need to reinitialize this each time
     // Listen for messages from the worker. The worker will only ever send base-64 encoded image data
-    worker.onmessage = function (e) {
+    worker.onmessage = function (e: MessageEvent<string>) {
         const imageData = e.data;
         zoomImage.src = imageData;
     }
